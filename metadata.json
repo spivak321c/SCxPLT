@@ -1,0 +1,6 @@
+{
+  "name": "Amphora Clone",
+  "description": "A highly polished, responsive single-page clone of the Amphora web design agency landing page, featuring gorgeous glowing dark gradients, animated process paths, interactive showcases, dynamic testimonials, and custom design pricing layouts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
