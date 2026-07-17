@@ -73,6 +73,23 @@ body.dark-theme {
   animation: pulse-slow 8s ease-in-out infinite;
 }
 
+
+/* Headline Typography Split & Spacing Utilities */
+.reveal-word-outer {
+  display: inline-block;
+  overflow: hidden;
+  margin-right: 0.28em;
+  padding-top: 0.18em;
+  padding-bottom: 0.18em;
+  margin-top: -0.18em;
+  margin-bottom: -0.18em;
+  vertical-align: bottom;
+}
+
+.headline-reveal-span {
+  display: inline-block;
+}
+
 /* Custom text stroke utilities */
 .text-stroke-black {
   -webkit-text-stroke: 2px #1a1a1a;
@@ -300,4 +317,27 @@ body.dark-theme .hover\:bg-neutral-800:hover {
 body.dark-theme #mobile-nav-overlay {
   background-color: #05020c !important;
 }
+
+/* Lenis smooth scrolling styles */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  scroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
 
