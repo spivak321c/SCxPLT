@@ -9,8 +9,13 @@ import { motion } from "motion/react";
 export default function BuiltWithHeart() {
   return (
     <section className="relative py-24 bg-[#f8f9fa] overflow-hidden" id="about-section">
-      {/* Subtle background blur spots */}
-      <div className="absolute top-1/2 left-10 -translate-y-1/2 w-80 h-80 bg-purple-600/5 rounded-full blur-[80px] pointer-events-none" />
+      {/* Subtle background blur spots using optimized radial gradients */}
+      <div 
+        className="absolute top-1/2 left-10 -translate-y-1/2 w-80 h-80 pointer-events-none" 
+        style={{
+          background: "radial-gradient(circle, rgba(124, 58, 237, 0.07) 0%, rgba(124, 58, 237, 0) 70%)"
+        }}
+      />
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         

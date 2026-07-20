@@ -48,8 +48,13 @@ export default function ComparisonSection() {
   return (
     <section className="py-24 bg-[#f8f9fa] relative overflow-hidden" id="comparison">
       
-      {/* Background spotlights */}
-      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-80 h-80 bg-purple-600/5 rounded-full blur-[100px] pointer-events-none" />
+      {/* Background spotlights using optimized radial gradients */}
+      <div 
+        className="absolute top-1/2 right-1/4 -translate-y-1/2 w-80 h-80 pointer-events-none" 
+        style={{
+          background: "radial-gradient(circle, rgba(124, 58, 237, 0.07) 0%, rgba(124, 58, 237, 0) 70%)"
+        }}
+      />
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         

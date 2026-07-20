@@ -150,9 +150,15 @@ export default function App() {
       }
     };
 
+    const originalHeaders: { el: HTMLHeadingElement; html: string }[] = [];
     const allHeaders = document.querySelectorAll("h2");
     allHeaders.forEach((heading) => {
       if (!heading.textContent || !heading.textContent.trim()) return;
+
+      // Prevent redundant splitting if already done
+      if (heading.querySelector(".reveal-word-outer")) return;
+
+      originalHeaders.push({ el: heading, html: heading.innerHTML });
 
       const wordSpans: HTMLSpanElement[] = [];
       const children = Array.from(heading.childNodes);
@@ -251,6 +257,9 @@ export default function App() {
       lenis.destroy();
       gsap.ticker.remove(gsapTickerCallback);
       triggers.forEach(t => t.kill());
+      originalHeaders.forEach(({ el, html }) => {
+        el.innerHTML = html;
+      });
     };
   }, []);
 

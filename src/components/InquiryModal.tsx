@@ -109,8 +109,13 @@ export default function InquiryModal({ isOpen, onClose, initialType = "local" }:
             className="relative w-full max-w-xl overflow-hidden rounded-none border-4 border-black bg-white p-6 md:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] z-10"
             id="modal-card"
           >
-            {/* Ambient glows inside card */}
-            <div className="absolute -top-24 -left-24 w-48 h-48 bg-purple-600/5 rounded-full blur-3xl pointer-events-none" />
+            {/* Ambient glows inside card using optimized radial gradients */}
+            <div 
+              className="absolute -top-24 -left-24 w-48 h-48 pointer-events-none" 
+              style={{
+                background: "radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, rgba(124, 58, 237, 0) 70%)"
+              }}
+            />
 
             {/* Close button */}
             <button

@@ -20,8 +20,13 @@ export default function PricingSection() {
 
   return (
     <section className="py-24 bg-[#f8f9fa] relative overflow-hidden" id="pricing">
-      {/* Background radial spotlights */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-purple-600/5 rounded-full blur-[110px] pointer-events-none" />
+      {/* Background radial spotlights using optimized radial gradients */}
+      <div 
+        className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 pointer-events-none" 
+        style={{
+          background: "radial-gradient(circle, rgba(124, 58, 237, 0.07) 0%, rgba(124, 58, 237, 0) 70%)"
+        }}
+      />
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         

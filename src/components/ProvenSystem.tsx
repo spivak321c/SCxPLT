@@ -10,8 +10,13 @@ import TiltCard from "./TiltCard";
 export default function ProvenSystem() {
   return (
     <section className="relative py-24 bg-[#f8f9fa] overflow-hidden" id="system-section">
-      {/* Background ambient orbs */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-pink-600/5 rounded-full blur-[120px] pointer-events-none animate-pulse-slow" />
+      {/* Background ambient orbs using optimized radial gradients */}
+      <div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none" 
+        style={{
+          background: "radial-gradient(circle, rgba(219, 39, 119, 0.06) 0%, rgba(219, 39, 119, 0) 70%)"
+        }}
+      />
       
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         

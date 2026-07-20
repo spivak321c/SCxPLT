@@ -18,8 +18,13 @@ export default function FeastForTheEyes() {
   return (
     <section className="py-24 bg-[#f8f9fa] relative overflow-hidden" id="feast-section">
       
-      {/* Background ambient orbs */}
-      <div className="absolute top-[30%] left-[10%] w-96 h-96 bg-purple-600/5 rounded-full blur-[100px] pointer-events-none" />
+      {/* Background ambient orbs using optimized radial gradients */}
+      <div 
+        className="absolute top-[30%] left-[10%] w-96 h-96 pointer-events-none" 
+        style={{
+          background: "radial-gradient(circle, rgba(124, 58, 237, 0.07) 0%, rgba(124, 58, 237, 0) 70%)"
+        }}
+      />
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         

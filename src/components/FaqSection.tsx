@@ -42,8 +42,13 @@ export default function FaqSection() {
   return (
     <section className="py-24 bg-[#f8f9fa] relative overflow-hidden" id="faq">
       
-      {/* Background glow spot */}
-      <div className="absolute top-1/2 left-10 w-80 h-80 bg-purple-500/5 rounded-full blur-[90px] pointer-events-none" />
+      {/* Background glow spot using optimized radial gradients */}
+      <div 
+        className="absolute top-1/2 left-10 w-80 h-80 pointer-events-none" 
+        style={{
+          background: "radial-gradient(circle, rgba(168, 85, 247, 0.07) 0%, rgba(168, 85, 247, 0) 70%)"
+        }}
+      />
 
       <div className="max-w-4xl mx-auto px-4 md:px-8 relative z-10">
         

@@ -13,8 +13,13 @@ export default function Footer() {
   return (
     <footer className="bg-[#f8f9fa] border-t-4 border-black pt-16 pb-12 relative overflow-hidden" id="app-footer">
       
-      {/* Background radial spotlight */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[200px] bg-purple-600/5 rounded-full blur-[90px] pointer-events-none" />
+      {/* Background radial spotlight using optimized radial gradients */}
+      <div 
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[200px] pointer-events-none" 
+        style={{
+          background: "radial-gradient(ellipse at bottom, rgba(124, 58, 237, 0.08) 0%, rgba(124, 58, 237, 0) 70%)"
+        }}
+      />
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10 space-y-12">
         

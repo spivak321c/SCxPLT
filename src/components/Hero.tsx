@@ -16,9 +16,19 @@ export default function Hero() {
   return (
     <section className="relative min-h-[90vh] pt-32 pb-20 md:py-36 overflow-hidden flex items-center bg-[#f8f9fa]" id="hero-section">
       
-      {/* Background ambient glowing gradient orbs */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-600/5 rounded-full blur-[120px] animate-pulse-slow pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-[350px] h-[350px] bg-pink-600/5 rounded-full blur-[100px] pointer-events-none" />
+      {/* Background ambient glowing gradient orbs using high-performance radial gradients (no heavy real-time CSS blur filters) */}
+      <div 
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none" 
+        style={{
+          background: "radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, rgba(124, 58, 237, 0) 70%)"
+        }}
+      />
+      <div 
+        className="absolute bottom-10 right-10 w-[350px] h-[350px] pointer-events-none" 
+        style={{
+          background: "radial-gradient(circle, rgba(236, 72, 153, 0.06) 0%, rgba(236, 72, 153, 0) 70%)"
+        }}
+      />
 
       {/* Grid Pattern Overlay */}
       <div className="absolute inset-0 hero-grid-pattern bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)] pointer-events-none" />
@@ -106,8 +116,13 @@ export default function Hero() {
 
         {/* Right: Mockup Column */}
         <div className="lg:col-span-5 relative" id="hero-mockup-col">
-          {/* Outer glowing halo behind browser */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/10 to-pink-500/5 rounded-none blur-2xl pointer-events-none" />
+          {/* Outer glowing halo behind browser using hardware-accelerated radial-gradient */}
+          <div 
+            className="absolute inset-0 rounded-none pointer-events-none" 
+            style={{
+              background: "radial-gradient(circle at center, rgba(124, 58, 237, 0.12) 0%, rgba(236, 72, 153, 0.06) 50%, transparent 100%)"
+            }}
+          />
 
           {/* Browser frame */}
           <TiltCard className="relative overflow-hidden rounded-none border-4 border-black bg-white shadow-[10px_10px_0px_0px_#1a1a1a]" id="browser-mockup">
