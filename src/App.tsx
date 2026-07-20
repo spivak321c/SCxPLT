@@ -116,25 +116,49 @@ export default function App() {
     }
 
     // 4. Scroll-Triggered Headlines & Typography Reveals
+    const splitNode = (node: Node, wordSpans: HTMLSpanElement[]) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const text = node.textContent || "";
+        if (!text.trim()) return;
+
+        const words = text.split(/(\s+)/);
+        const fragment = document.createDocumentFragment();
+
+        words.forEach((word) => {
+          if (word.trim() === "") {
+            fragment.appendChild(document.createTextNode(word));
+          } else {
+            const outerSpan = document.createElement("span");
+            outerSpan.className = "reveal-word-outer";
+            const innerSpan = document.createElement("span");
+            innerSpan.className = "headline-reveal-span";
+            innerSpan.textContent = word;
+            outerSpan.appendChild(innerSpan);
+            fragment.appendChild(outerSpan);
+            wordSpans.push(innerSpan);
+          }
+        });
+
+        node.parentNode?.replaceChild(fragment, node);
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        const el = node as HTMLElement;
+        if (el.classList.contains("headline-reveal-span") || el.classList.contains("reveal-word-outer")) {
+          return;
+        }
+        const children = Array.from(node.childNodes);
+        children.forEach((child) => splitNode(child, wordSpans));
+      }
+    };
+
     const allHeaders = document.querySelectorAll("h2");
     allHeaders.forEach((heading) => {
-      const text = heading.textContent || "";
-      if (!text.trim()) return;
-
-      const words = text.trim().split(/\s+/);
-      heading.innerHTML = "";
+      if (!heading.textContent || !heading.textContent.trim()) return;
 
       const wordSpans: HTMLSpanElement[] = [];
-      words.forEach((word) => {
-        const outerSpan = document.createElement("span");
-        outerSpan.className = "reveal-word-outer";
-        const innerSpan = document.createElement("span");
-        innerSpan.className = "headline-reveal-span";
-        innerSpan.textContent = word;
-        outerSpan.appendChild(innerSpan);
-        heading.appendChild(outerSpan);
-        wordSpans.push(innerSpan);
-      });
+      const children = Array.from(heading.childNodes);
+      children.forEach((child) => splitNode(child, wordSpans));
+
+      if (wordSpans.length === 0) return;
 
       gsap.fromTo(wordSpans,
         { y: "110%", opacity: 0 },

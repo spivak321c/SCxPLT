@@ -30,8 +30,8 @@ export default function FaqSection() {
       answer: "Absolutely! Adding multi-service appointment scheduling with automated email alerts, secure customer payment portals, advanced product search databases, and custom lead-capture funnels is what we specialize in. Everything is hand-coded to work seamlessly and load instantly."
     },
     {
-      question: "How is GDPR compliance and cookie banner setups handled?",
-      answer: "We take privacy very seriously. We host all sites on secure servers in Germany and configure clean, cookie-free analytics. This means you get detailed user metrics without needing to display intrusive, conversion-killing cookie consent banners to your customers, unless you decide to add third-party marketing pixels."
+      question: "How is privacy compliance and cookie banner setups handled?",
+      answer: "We take privacy very seriously. We host all sites on secure cloud environments and configure clean, cookie-free analytics. This means you get detailed user metrics without needing to display intrusive, conversion-killing cookie consent banners to your customers, unless you decide to add third-party marketing pixels."
     },
     {
       question: "How long does it take to build and launch the full website?",

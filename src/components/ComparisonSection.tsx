@@ -40,7 +40,7 @@ export default function ComparisonSection() {
       dimension: "Support & Direct Collaboration",
       siteBuilder: "No personal developer. Generic support tickets with slow bots.",
       agency: "Complicated hierarchy with project managers instead of direct developers.",
-      amphora: "Direct, personal line to your local developer in Germany. Fast responses.",
+      amphora: "Direct, personal line to your local developer in Nigeria. Fast responses.",
       highlight: true,
     }
   ];
@@ -59,11 +59,11 @@ export default function ComparisonSection() {
           <h2 className="text-3xl sm:text-4xl font-sans font-black tracking-tighter uppercase text-black leading-tight">
             Site builder, agency or{" "}
             <span className="text-stroke-black text-transparent block mt-1">
-              Amphora?
+              SCVLPT.STUDIO?
             </span>
           </h2>
           <p className="text-neutral-600 font-sans text-sm sm:text-base font-semibold leading-relaxed">
-            Every option has its price. And not just in Euros. See how we weigh up against standard industry templates and agencies.
+            Every option has its price. And not just in Naira. See how we weigh up against standard industry templates and agencies.
           </p>
         </div>
 
@@ -81,7 +81,7 @@ export default function ComparisonSection() {
             <span>Classic Web Agency</span>
             <span className="text-purple-600 font-sans font-black flex items-center gap-1.5">
               <Flame className="w-4 h-4 text-purple-600" />
-              Amphora Solution
+              SCVLPT.STUDIO Solution
             </span>
           </div>
 
@@ -137,7 +137,7 @@ export default function ComparisonSection() {
                 <div className="p-3.5 rounded-none bg-purple-50 border-2 border-black space-y-1">
                   <span className="text-purple-600 block font-black uppercase font-mono flex items-center gap-1.5">
                     <Check className="w-3.5 h-3.5 text-emerald-600" />
-                    Amphora Solution
+                    SCVLPT.STUDIO Solution
                   </span>
                   <p className="text-black font-black">{row.amphora}</p>
                 </div>

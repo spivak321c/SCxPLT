@@ -37,7 +37,7 @@ export default function BuiltWithHeart() {
             {/* Background image with lazy transition */}
             <img
               src="/src/assets/images/developer_at_desk_1784301816194.jpg"
-              alt="Developer working on website in Bremen"
+              alt="Developer working on website in Port Harcourt"
               className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700 ease-out"
               referrerPolicy="no-referrer"
               id="developer-office-img"
@@ -47,7 +47,7 @@ export default function BuiltWithHeart() {
             
             {/* Overlay label */}
             <div className="absolute top-5 left-5 bg-white border-2 border-black rounded-none px-3.5 py-1 text-[10px] font-mono uppercase text-black font-black">
-              Bremen Headquarters
+              Port Harcourt Headquarters
             </div>
 
             {/* Bottom Content overlay */}
@@ -69,13 +69,13 @@ export default function BuiltWithHeart() {
               <div className="space-y-2">
                 <h3 className="text-base font-sans font-black uppercase text-black">Local & personal</h3>
                 <p className="text-neutral-600 text-xs font-sans font-semibold leading-relaxed">
-                  A direct line to your dedicated developer. We collaborate locally in Bremen, ensuring you get transparent, fast communication and genuine consulting.
+                  A direct line to your dedicated developer. We collaborate locally in Port Harcourt, Rivers, Nigeria, ensuring you get transparent, fast communication and genuine consulting.
                 </p>
               </div>
             </div>
             
             <div className="pt-4 border-t-2 border-black mt-6 flex items-center justify-between text-[10px] font-mono text-black uppercase tracking-wider font-black">
-              <span>Made in Germany</span>
+              <span>Made in Nigeria</span>
               <span className="w-2.5 h-2.5 bg-emerald-500 border border-black rounded-full" />
             </div>
           </div>

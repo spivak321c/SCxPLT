@@ -110,7 +110,7 @@ export default function StepsSection() {
           </button>
           
           <p className="text-xs font-mono text-neutral-500 font-black tracking-widest uppercase">
-            ✓ NO RISK • 7-DAY DELIVERY • MADE IN GERMANY
+            ✓ NO RISK • 7-DAY DELIVERY • MADE IN NIGERIA
           </p>
         </div>
 

@@ -25,14 +25,14 @@ export default function Footer() {
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-2 cursor-pointer" onClick={handleScrollToTop} id="footer-logo">
               <div className="relative flex items-center justify-center w-7 h-7 rounded-none bg-black p-0.5 border-2 border-black">
-                <span className="text-[10px] font-sans font-black text-white uppercase">a</span>
+                <span className="text-[10px] font-sans font-black text-white uppercase">s</span>
               </div>
-              <span className="text-base font-sans font-black tracking-wider text-black uppercase">amphora</span>
+              <span className="text-base font-sans font-black tracking-wider text-black uppercase">scvlpt.studio</span>
             </div>
             
             <p className="text-neutral-500 text-xs font-sans font-semibold max-w-sm leading-relaxed">
               Bespoke, hand-coded single-page websites, custom application frameworks, and automated online booking integrations. 
-              Meticulously engineered in Bremen, Germany.
+              Meticulously engineered in Port Harcourt, Rivers, Nigeria.
             </p>
 
             {/* Socials stack */}
@@ -82,12 +82,12 @@ export default function Footer() {
             <div className="space-y-3 text-xs text-neutral-500 font-semibold font-sans">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-black shrink-0 mt-0.5 stroke-[2.5]" />
-                <span>Bremen, Germany • Available local & remote</span>
+                <span>Port Harcourt, Rivers, Nigeria • Available local & remote</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-black shrink-0 stroke-[2.5]" />
-                <a href="mailto:hello@amphora.de" className="hover:text-black transition-colors">
-                  hello@amphora.de
+                <a href="mailto:hello@scvlpt.studio" className="hover:text-black transition-colors">
+                  hello@scvlpt.studio
                 </a>
               </div>
             </div>
@@ -99,11 +99,11 @@ export default function Footer() {
         <div className="pt-8 border-t-2 border-black flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-mono text-neutral-500 font-bold" id="footer-bottom-row">
           
           <div className="flex flex-wrap items-center gap-4">
-            <span>© {new Date().getFullYear()} Amphora. All rights reserved.</span>
+            <span>© {new Date().getFullYear()} SCVLPT.STUDIO. All rights reserved.</span>
             <span className="hidden sm:inline text-neutral-300">•</span>
-            <a href="#" className="hover:text-black transition-colors">Impressum</a>
+            <a href="#" className="hover:text-black transition-colors">Imprint</a>
             <span className="hidden sm:inline text-neutral-300">•</span>
-            <a href="#" className="hover:text-black transition-colors">Datenschutz</a>
+            <a href="#" className="hover:text-black transition-colors">Privacy Policy</a>
           </div>
 
           <button

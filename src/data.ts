@@ -13,7 +13,7 @@ export const CLIENT_LOGOS: ClientLogo[] = [
   { name: "OXZY" },
   { name: "ANTIK VEHRS" },
   { name: "CLOCKWISE" },
-  { name: "UNIVERSITÄT BREMEN" },
+  { name: "UNIV OF PORT HARCOURT" },
   { name: "CORD'S" },
   { name: "LIFE & CO" },
 ];
@@ -200,8 +200,8 @@ export const PROMISES: PromiseType[] = [
   },
   {
     id: "gdpr",
-    title: "GDPR compliance",
-    description: "We build with absolute privacy standard. Hosting in Germany, zero cookie-banners needed unless you explicitly request tracking.",
+    title: "Privacy compliance",
+    description: "We build with absolute privacy standard. Secure and optimized cloud hosting, zero cookie-banners needed unless you explicitly request tracking.",
     icon: "Lock",
   },
 ];

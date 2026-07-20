@@ -81,7 +81,7 @@ export default function PromisesSection() {
 
                 {/* Micro visual accent lines bottom corner */}
                 <div className="pt-4 mt-6 border-t-2 border-black text-right">
-                  <span className="text-[9px] font-mono text-black font-black uppercase tracking-wider">AMPHORA CONFIRMED</span>
+                  <span className="text-[9px] font-mono text-black font-black uppercase tracking-wider">SCVLPT CONFIRMED</span>
                 </div>
               </TiltCard>
             );
@@ -90,7 +90,7 @@ export default function PromisesSection() {
 
         {/* Five Promises bottom guarantee note */}
         <div className="mt-16 text-center text-xs font-sans text-neutral-500 max-w-md mx-auto font-semibold leading-relaxed">
-          We back every single launch with our signature quality seal, ensuring absolute technical conformity with GDPR and standard search specifications.
+          We back every single launch with our signature quality seal, ensuring absolute technical conformity with global data privacy and standard search specifications.
         </div>
 
       </div>

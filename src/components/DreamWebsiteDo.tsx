@@ -55,7 +55,8 @@ export default function DreamWebsiteDo() {
         </div>
 
         {/* Tab Selection + Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch" id="dream-website-showcase">
+        {/* Desktop Showcase: Grid layout (visible on lg screens and up) */}
+        <div className="hidden lg:grid grid-cols-12 gap-8 items-stretch" id="dream-website-showcase-desktop">
           
           {/* Left: Tab selectors (4 cols) */}
           <div className="lg:col-span-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:flex lg:flex-col gap-3 pb-4 lg:pb-0" id="website-tabs-list">
@@ -154,6 +155,112 @@ export default function DreamWebsiteDo() {
 
           </TiltCard>
 
+        </div>
+
+        {/* Mobile Showcase: Vertical Accordion (visible below lg screens) */}
+        <div className="block lg:hidden space-y-4" id="dream-website-showcase-mobile">
+          {WEBSITE_TYPES.map((type) => {
+            const isActive = type.id === activeType;
+            return (
+              <div 
+                key={type.id} 
+                className="border-4 border-black bg-white overflow-hidden shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                id={`mobile-accordion-wrapper-${type.id}`}
+              >
+                {/* Accordion Header Button */}
+                <button
+                  type="button"
+                  onClick={() => setActiveType(isActive ? "" : type.id)}
+                  className={`w-full flex items-center justify-between p-4 text-left select-none transition-colors cursor-pointer ${
+                    isActive ? "bg-black text-white" : "bg-white text-black hover:bg-neutral-50"
+                  }`}
+                  id={`mobile-accordion-header-${type.id}`}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className={`p-2 rounded-none border-2 border-black shrink-0 ${
+                      isActive ? "bg-neutral-800 text-purple-400" : "bg-neutral-100 text-neutral-500"
+                    }`}>
+                      {getIcon(type.icon)}
+                    </div>
+                    <div>
+                      <h3 className="font-sans font-black text-xs sm:text-sm uppercase leading-tight">{type.title}</h3>
+                      <p className={`text-[8px] sm:text-[9px] font-mono mt-0.5 tracking-wider uppercase font-black ${
+                        isActive ? "text-purple-300" : "text-neutral-400"
+                      }`}>
+                        {type.id === "local" ? "Physical Bridge" : type.id === "salon" ? "Appointments" : type.id === "shop" ? "E-Commerce" : "Lead Gen"}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  {/* Plus/Minus Indicator */}
+                  <div className={`w-6 h-6 border-2 border-black flex items-center justify-center font-black text-xs shrink-0 ${
+                    isActive ? "bg-purple-600 text-white" : "bg-neutral-100 text-black"
+                  }`}>
+                    {isActive ? "−" : "+"}
+                  </div>
+                </button>
+
+                {/* Accordion Content Panel (Rendered only when active) */}
+                {isActive && (
+                  <div className="border-t-4 border-black bg-white" id={`mobile-accordion-content-${type.id}`}>
+                    {/* Visual image banner */}
+                    <div className="relative h-44 w-full">
+                      <img
+                        src={type.image}
+                        alt={type.title}
+                        className="w-full h-full object-cover"
+                        referrerPolicy="no-referrer"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/40 to-transparent" />
+                      <div className="absolute top-3 left-3 bg-white border-2 border-black px-2 py-0.5 text-[8px] font-mono font-black uppercase text-black">
+                        Live Customer Blueprint
+                      </div>
+                    </div>
+
+                    {/* Copy details */}
+                    <div className="p-4 space-y-4 text-left">
+                      <div className="space-y-1">
+                        <span className="text-[9px] font-mono font-black tracking-widest text-purple-600 uppercase block">
+                          {type.tagline}
+                        </span>
+                        <h4 className="text-base font-sans font-black uppercase text-black">
+                          {type.title}
+                        </h4>
+                      </div>
+
+                      <p className="text-neutral-600 text-xs font-sans font-semibold leading-relaxed">
+                        {type.description}
+                      </p>
+
+                      {/* Features list */}
+                      <div className="space-y-2 pt-1">
+                        {type.features.map((feature, i) => (
+                          <div key={i} className="flex gap-2 text-xs text-neutral-700 font-sans font-semibold items-start">
+                            <div className="p-0.5 rounded-none bg-emerald-100 text-emerald-800 border-2 border-black mt-0.5 shrink-0">
+                              <Check className="w-3 h-3 stroke-[3]" />
+                            </div>
+                            <span className="leading-tight">{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Action CTA button */}
+                      <div className="pt-3 border-t-2 border-black">
+                        <button
+                          onClick={() => setIsInquiryOpen(true)}
+                          className="w-full py-2.5 px-4 rounded-none bg-black border-2 border-black text-white font-sans font-black text-xs uppercase tracking-widest flex items-center justify-between transition-all shadow-[4px_4px_0px_0px_#7c3aed] cursor-pointer"
+                        >
+                          <span>{type.ctaText}</span>
+                          <ArrowRight className="w-4 h-4 text-purple-400" />
+                        </button>
+                      </div>
+
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
 
       </div>

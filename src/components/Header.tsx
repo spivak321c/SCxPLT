@@ -4,13 +4,12 @@
  */
 
 import { useState, useEffect, useRef } from "react";
-import { Sparkles, Languages, Sun, Moon } from "lucide-react";
+import { Sparkles, Sun, Moon } from "lucide-react";
 import { gsap } from "gsap";
 import InquiryModal from "./InquiryModal";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [currentLang, setCurrentLang] = useState<"EN" | "DE">("EN");
   const [isInquiryOpen, setIsInquiryOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -141,9 +140,9 @@ export default function Header() {
   ];
 
   const mobileNavLinks = [
-    { label: "PROZESS", id: "process" },
-    { label: "REFERENZEN", id: "work" },
-    { label: "PREISE", id: "pricing" },
+    { label: "PROCESS", id: "process" },
+    { label: "WORK", id: "work" },
+    { label: "PRICING", id: "pricing" },
     { label: "FAQ", id: "faq" },
   ];
 
@@ -175,36 +174,16 @@ export default function Header() {
                 {link.label}
               </button>
             ))}
-
-            {/* Language toggle */}
-            <div className="flex items-center gap-1.5 ml-4 pl-4 border-l-2 border-black text-xs font-mono">
-              <Languages className="w-3.5 h-3.5 text-neutral-500" />
-              <button
-                onClick={() => setCurrentLang("DE")}
-                className={`transition-colors cursor-pointer font-bold ${currentLang === "DE" ? "text-black underline decoration-2 underline-offset-4" : "text-neutral-400 hover:text-black"}`}
-                id="lang-de-btn"
-              >
-                DE
-              </button>
-              <span className="text-neutral-300">|</span>
-              <button
-                onClick={() => setCurrentLang("EN")}
-                className={`transition-colors cursor-pointer font-bold ${currentLang === "EN" ? "text-black underline decoration-2 underline-offset-4" : "text-neutral-400 hover:text-black"}`}
-                id="lang-en-btn"
-              >
-                EN
-              </button>
-            </div>
           </nav>
 
           {/* Center: Brand Logo */}
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} id="header-logo">
             <div className="relative flex items-center justify-center w-8 h-8 rounded-none border-2 border-black bg-black p-0.5">
               <div className="w-full h-full bg-white rounded-none flex items-center justify-center">
-                <span className="text-xs font-sans font-black text-black uppercase">a</span>
+                <span className="text-xs font-sans font-black text-black uppercase">s</span>
               </div>
             </div>
-            <span className="text-lg font-sans font-black tracking-tighter uppercase text-black">amphora</span>
+            <span className="text-lg font-sans font-black tracking-tighter uppercase text-black">scvlpt.studio</span>
           </div>
 
           {/* Right: CTA Button (Desktop) */}
@@ -235,7 +214,7 @@ export default function Header() {
             </button>
           </div>
 
-          {/* Mobile elements (Hamburger Morphing Trigger & Lang switcher) */}
+          {/* Mobile elements (Hamburger Morphing Trigger) */}
           <div className="flex items-center gap-3 md:hidden" id="mobile-header-actions">
             {/* Theme Toggle Mobile */}
             <button
@@ -253,19 +232,6 @@ export default function Header() {
               ) : (
                 <Sun className="w-3.5 h-3.5 text-orange-500 animate-pulse" />
               )}
-            </button>
-
-            {/* Lang switcher */}
-            <button
-              onClick={() => setCurrentLang(currentLang === "EN" ? "DE" : "EN")}
-              className={`p-1.5 rounded-none border-2 text-[10px] font-mono font-bold transition-all ${
-                isMobileMenuOpen 
-                  ? "bg-black border-neutral-800 text-neutral-400 hover:text-white"
-                  : "bg-white border-black text-black hover:bg-neutral-100"
-              }`}
-              id="lang-mobile-toggle"
-            >
-              {currentLang}
             </button>
             
             {/* Morphing Hamburger Menu Trigger */}
@@ -340,11 +306,11 @@ export default function Header() {
             className="w-full py-4 rounded-none border-2 border-white bg-white text-black font-black text-xs uppercase tracking-widest text-center block shadow-[4px_4px_0px_0px_#7c3aed] cursor-pointer hover:bg-neutral-100 transition-all active:translate-x-0.5 active:translate-y-0.5"
             id="mobile-nav-overlay-cta"
           >
-            PROJEKT STARTEN ↗
+            START PROJECT ↗
           </button>
           
           <div className="flex items-center justify-between text-[10px] font-mono text-neutral-500 uppercase tracking-widest border-t border-neutral-900 pt-4">
-            <span>EST. 2026 / BREMEN</span>
+            <span>EST. 2026 / PORT HARCOURT</span>
             <span>DESIGN • TECH</span>
           </div>
         </div>

@@ -46,7 +46,7 @@ export default function Hero() {
 
           {/* Description */}
           <p className="text-base sm:text-lg text-neutral-600 max-w-xl font-sans font-semibold leading-relaxed" id="hero-subtitle">
-            Professional websites, stunning landing pages & robust online shops custom-coded in Bremen. 
+            Professional websites, stunning landing pages & robust online shops custom-coded in Port Harcourt. 
             Get your first draft designed and presented in just <strong className="text-black font-black">7 days</strong> – completely free, no strings attached.
           </p>
 
@@ -98,7 +98,7 @@ export default function Hero() {
                 <span className="text-xs font-mono font-black text-black ml-1.5">5.0 Rating</span>
               </div>
               <p className="text-xs font-sans text-neutral-600 font-semibold">
-                Trusted by <strong className="text-black font-black">50+ local businesses</strong> & clinics in Germany
+                Trusted by <strong className="text-black font-black">50+ local businesses</strong> & clinics in Nigeria
               </p>
             </div>
           </div>
@@ -162,20 +162,20 @@ export default function Hero() {
 
               {/* Body inside mock based on selected tab */}
               <div className="min-h-[140px] flex flex-col justify-between" id="mock-inner-body">
-                {activeTabInMock === "home" && (
+                 {activeTabInMock === "home" && (
                   <div className="space-y-4 animate-fade-in text-left">
                     <p className="text-sm font-sans font-black text-black uppercase leading-snug tracking-tight">
-                      Permanent <span className="text-purple-600 underline decoration-2 decoration-purple-600">mehr Du.</span>
+                      Permanent <span className="text-purple-600 underline decoration-2 decoration-purple-600">more you.</span>
                     </p>
                     <div className="w-full h-12 rounded-none bg-white border-2 border-black flex items-center justify-between px-3">
-                      <span className="text-[10px] text-neutral-500 font-mono font-bold">Kostenlose Beratung</span>
-                      <span className="px-2 py-1 bg-black text-white text-[9px] font-mono font-black uppercase tracking-wide">Buchen</span>
+                      <span className="text-[10px] text-neutral-500 font-mono font-bold">Free Consultation</span>
+                      <span className="px-2 py-1 bg-black text-white text-[9px] font-mono font-black uppercase tracking-wide">Book</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-5 h-5 rounded-none border-2 border-black bg-emerald-400 text-black flex items-center justify-center">
                         <ShieldCheck className="w-3.5 h-3.5" />
                       </div>
-                      <span className="text-[10px] font-mono font-black text-black uppercase tracking-wider">Zertifiziert & geprüft</span>
+                      <span className="text-[10px] font-mono font-black text-black uppercase tracking-wider">Certified & verified</span>
                     </div>
                   </div>
                 )}
@@ -198,12 +198,12 @@ export default function Hero() {
                   </div>
                 )}
 
-                {activeTabInMock === "booking" && (
+                 {activeTabInMock === "booking" && (
                   <div className="space-y-3 animate-fade-in text-left">
                     <span className="text-[10px] text-neutral-500 uppercase tracking-widest block font-mono font-black">Select Service</span>
                     {[
-                      { name: "Microblading Powder Brows", price: "450€" },
-                      { name: "Aquarell Lips Refinement", price: "390€" },
+                      { name: "Microblading Powder Brows", price: "₦45,000" },
+                      { name: "Aquarell Lips Refinement", price: "₦39,000" },
                     ].map((s, idx) => (
                       <div key={idx} className="flex items-center justify-between p-2 rounded-none bg-white border-2 border-black">
                         <span className="text-[10px] text-neutral-800 font-sans font-bold">{s.name}</span>
@@ -221,7 +221,7 @@ export default function Hero() {
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
                   Live Sync Active
                 </span>
-                <span className="uppercase tracking-wider">Bremen, DE</span>
+                <span className="uppercase tracking-wider">Port Harcourt, NG</span>
               </div>
             </div>
 

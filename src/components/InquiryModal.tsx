@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from "react";
-import { X, Check, CalendarCheck, MapPin, ShoppingBag, Share2, Sparkles, Send, Flame } from "lucide-react";
+import { X, Check, CalendarCheck, MapPin, ShoppingBag, Share2, Sparkles, Send, Flame, HelpCircle } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 interface InquiryModalProps {
@@ -16,6 +16,7 @@ interface InquiryModalProps {
 export default function InquiryModal({ isOpen, onClose, initialType = "local" }: InquiryModalProps) {
   const [step, setStep] = useState(1);
   const [selectedType, setSelectedType] = useState(initialType);
+  const [customType, setCustomType] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
   const [notes, setNotes] = useState("");
@@ -45,6 +46,7 @@ export default function InquiryModal({ isOpen, onClose, initialType = "local" }:
   const resetForm = () => {
     setStep(1);
     setSelectedType("local");
+    setCustomType("");
     setCompanyName("");
     setEmail("");
     setNotes("");
@@ -57,6 +59,7 @@ export default function InquiryModal({ isOpen, onClose, initialType = "local" }:
     { id: "salon", name: "Salon, Practice & Service", icon: CalendarCheck, desc: "For appointment bookings" },
     { id: "shop", name: "E-Commerce & Shop", icon: ShoppingBag, desc: "To sell products online" },
     { id: "agency", name: "Modern Social & Agency", icon: Share2, desc: "For inquiries & leads" },
+    { id: "custom", name: "Other / Specify Type", icon: HelpCircle, desc: "Tell us what you're building" },
   ];
 
   return (
@@ -169,11 +172,27 @@ export default function InquiryModal({ isOpen, onClose, initialType = "local" }:
                         required
                         value={companyName}
                         onChange={(e) => setCompanyName(e.target.value)}
-                        placeholder="e.g. Grechow's Beauty"
+                        placeholder="e.g. Rivers Tech Lab"
                         className="w-full px-4 py-3 bg-white border-2 border-black rounded-none text-black placeholder-neutral-400 focus:outline-none focus:bg-neutral-50 transition-all font-sans font-semibold"
                         id="input-company-name"
                       />
                     </div>
+                    {selectedType === "custom" && (
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-mono text-black font-black tracking-wider uppercase block">
+                          Please specify your type of business *
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={customType}
+                          onChange={(e) => setCustomType(e.target.value)}
+                          placeholder="e.g. Fitness Coach, Real Estate Agent, Creator Studio"
+                          className="w-full px-4 py-3 bg-white border-2 border-black rounded-none text-black placeholder-neutral-400 focus:outline-none focus:bg-neutral-50 transition-all font-sans font-semibold"
+                          id="input-custom-type"
+                        />
+                      </div>
+                    )}
                     <div className="space-y-1.5">
                       <label className="text-xs font-mono text-black font-black tracking-wider uppercase block">
                         Any specific preferences or target audience? (Optional)
@@ -215,7 +234,7 @@ export default function InquiryModal({ isOpen, onClose, initialType = "local" }:
                       </div>
                       <div className="flex gap-2 text-neutral-600 text-xs font-sans font-semibold">
                         <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5 stroke-[3]" />
-                        <span><strong>7 Days response time</strong>: Our core designer in Germany builds your customized structure, starting now.</span>
+                        <span><strong>7 Days response time</strong>: Our core designer in Nigeria builds your customized structure, starting now.</span>
                       </div>
                     </div>
                   </div>
@@ -240,7 +259,7 @@ export default function InquiryModal({ isOpen, onClose, initialType = "local" }:
                     <button
                       type="button"
                       onClick={handleNext}
-                      disabled={step === 2 && !companyName}
+                      disabled={step === 2 && (!companyName || (selectedType === "custom" && !customType))}
                       className="px-6 py-2.5 rounded-none border-2 border-black bg-black text-white hover:bg-neutral-800 font-sans font-black text-sm uppercase tracking-widest transition-colors flex items-center gap-1 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]"
                       id="modal-next-btn"
                     >

@@ -98,12 +98,12 @@ export default function ProvenSystem() {
               <div className="space-y-1 text-left overflow-x-auto select-none font-bold">
                 <div><span className="text-purple-600">"{"@context"}"</span>: <span className="text-emerald-600">"https://schema.org"</span>,</div>
                 <div><span className="text-purple-600">"{"@type"}"</span>: <span className="text-emerald-600">"LocalBusiness"</span>,</div>
-                <div><span className="text-purple-600">"name"</span>: <span className="text-emerald-600">"Grechow's Beauty"</span>,</div>
+                <div><span className="text-purple-600">"name"</span>: <span className="text-emerald-600">"Rivers Tech Lab"</span>,</div>
                 <div><span className="text-purple-600">"address"</span>: {"{"}</div>
-                <div className="pl-4"><span className="text-purple-600">"addressLocality"</span>: <span className="text-emerald-600">"Bremen"</span>,</div>
-                <div className="pl-4"><span className="text-purple-600">"postalCode"</span>: <span className="text-emerald-600">"28195"</span></div>
+                <div className="pl-4"><span className="text-purple-600">"addressLocality"</span>: <span className="text-emerald-600">"Port Harcourt"</span>,</div>
+                <div className="pl-4"><span className="text-purple-600">"postalCode"</span>: <span className="text-emerald-600">"500101"</span></div>
                 <div>{"}"},</div>
-                <div><span className="text-purple-600">"geo"</span>: {"{"} <span className="text-neutral-500">latitude: 53.0793, longitude: 8.8017</span> {"}"}</div>
+                <div><span className="text-purple-600">"geo"</span>: {"{"} <span className="text-neutral-500">latitude: 4.8156, longitude: 7.0498</span> {"}"}</div>
               </div>
             </div>
 
