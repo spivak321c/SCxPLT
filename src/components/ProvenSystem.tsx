@@ -108,7 +108,7 @@ export default function ProvenSystem() {
             </div>
 
             {/* Small stats pill features */}
-            <div className="grid grid-cols-3 gap-3 mt-6 pt-6 border-t-2 border-black" id="stats-pill-features">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6 pt-6 border-t-2 border-black" id="stats-pill-features">
               <div className="flex items-center gap-2">
                 <Search className="w-4 h-4 text-black shrink-0" />
                 <span className="text-[11px] text-neutral-800 font-sans font-black uppercase">Semantic search</span>

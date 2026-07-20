@@ -16,12 +16,35 @@ interface InquiryModalProps {
 export default function InquiryModal({ isOpen, onClose, initialType = "local" }: InquiryModalProps) {
   const [step, setStep] = useState(1);
   const [selectedType, setSelectedType] = useState(initialType);
+  const [businessType, setBusinessType] = useState("Cafe / Local Coffee Shop");
   const [customType, setCustomType] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
   const [notes, setNotes] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Sync dropdown when Step 1 selection changes
+  React.useEffect(() => {
+    if (selectedType === "local") setBusinessType("Cafe / Local Coffee Shop");
+    else if (selectedType === "salon") setBusinessType("Beauty Salon / Spa");
+    else if (selectedType === "shop") setBusinessType("E-Commerce / Online Retailer");
+    else if (selectedType === "agency") setBusinessType("Marketing / Creative Agency");
+    else if (selectedType === "custom") setBusinessType("other");
+  }, [selectedType]);
+
+  const businessTypeOptions = [
+    { value: "Cafe / Local Coffee Shop", label: "Cafe / Local Coffee Shop" },
+    { value: "Restaurant / Gastronomy", label: "Restaurant / Gastronomy" },
+    { value: "Medical Practice / Clinic", label: "Medical Practice / Clinic" },
+    { value: "Beauty Salon / Spa", label: "Beauty Salon / Spa" },
+    { value: "E-Commerce / Online Retailer", label: "E-Commerce / Online Retailer" },
+    { value: "Marketing / Creative Agency", label: "Marketing / Creative Agency" },
+    { value: "Real Estate Agency", label: "Real Estate Agency" },
+    { value: "SaaS / Software Company", label: "SaaS / Software Company" },
+    { value: "Consulting / Professional Services", label: "Consulting / Professional Services" },
+    { value: "other", label: "Other (Please specify below)" },
+  ];
 
   const handleNext = () => {
     if (step < 3) setStep((prev) => prev + 1);
@@ -46,6 +69,7 @@ export default function InquiryModal({ isOpen, onClose, initialType = "local" }:
   const resetForm = () => {
     setStep(1);
     setSelectedType("local");
+    setBusinessType("Cafe / Local Coffee Shop");
     setCustomType("");
     setCompanyName("");
     setEmail("");
@@ -177,7 +201,27 @@ export default function InquiryModal({ isOpen, onClose, initialType = "local" }:
                         id="input-company-name"
                       />
                     </div>
-                    {selectedType === "custom" && (
+
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-mono text-black font-black tracking-wider uppercase block">
+                        Specify your type of business *
+                      </label>
+                      <select
+                        required
+                        value={businessType}
+                        onChange={(e) => setBusinessType(e.target.value)}
+                        className="w-full px-4 py-3 bg-white border-2 border-black rounded-none text-black focus:outline-none focus:bg-neutral-50 transition-all font-sans font-semibold cursor-pointer"
+                        id="select-business-type"
+                      >
+                        {businessTypeOptions.map((opt) => (
+                          <option key={opt.value} value={opt.value} className="font-sans font-semibold">
+                            {opt.label}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    {businessType === "other" && (
                       <div className="space-y-1.5">
                         <label className="text-xs font-mono text-black font-black tracking-wider uppercase block">
                           Please specify your type of business *
@@ -188,7 +232,7 @@ export default function InquiryModal({ isOpen, onClose, initialType = "local" }:
                           value={customType}
                           onChange={(e) => setCustomType(e.target.value)}
                           placeholder="e.g. Fitness Coach, Real Estate Agent, Creator Studio"
-                          className="w-full px-4 py-3 bg-white border-2 border-black rounded-none text-black placeholder-neutral-400 focus:outline-none focus:bg-neutral-50 transition-all font-sans font-semibold"
+                          className="w-full px-4 py-3 bg-white border-2 border-black rounded-none text-black placeholder-neutral-400 focus:outline-none focus:bg-neutral-50 transition-all font-sans font-semibold animate-fade-in"
                           id="input-custom-type"
                         />
                       </div>
@@ -259,7 +303,7 @@ export default function InquiryModal({ isOpen, onClose, initialType = "local" }:
                     <button
                       type="button"
                       onClick={handleNext}
-                      disabled={step === 2 && (!companyName || (selectedType === "custom" && !customType))}
+                      disabled={step === 2 && (!companyName || !businessType || (businessType === "other" && !customType.trim()))}
                       className="px-6 py-2.5 rounded-none border-2 border-black bg-black text-white hover:bg-neutral-800 font-sans font-black text-sm uppercase tracking-widest transition-colors flex items-center gap-1 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]"
                       id="modal-next-btn"
                     >
@@ -291,31 +335,132 @@ export default function InquiryModal({ isOpen, onClose, initialType = "local" }:
                 </div>
               </form>
             ) : (
-              /* Success view */
+              /* Success view with custom high-quality interactive burst animation */
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-6 space-y-4 animate-fade-in"
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="text-center py-8 space-y-6 overflow-hidden relative"
                 id="modal-success-screen"
               >
-                <div className="inline-flex p-3 rounded-none bg-purple-50 border-2 border-black mb-2 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
-                  <Flame className="w-8 h-8 text-purple-600" />
+                {/* Custom Confetti Explosion */}
+                <div className="absolute inset-0 pointer-events-none flex items-center justify-center" id="success-particles-container">
+                  {Array.from({ length: 32 }).map((_, i) => {
+                    const angle = (i / 32) * 360 + (Math.random() * 15 - 7.5);
+                    const distance = 80 + Math.random() * 120;
+                    const size = 6 + Math.random() * 10;
+                    const colors = ["#7c3aed", "#a78bfa", "#000000", "#10b981", "#f59e0b", "#ec4899", "#3b82f6"];
+                    const color = colors[i % colors.length];
+                    const x = Math.cos((angle * Math.PI) / 180) * distance;
+                    const y = Math.sin((angle * Math.PI) / 180) * distance;
+                    const isCircle = Math.random() > 0.5;
+                    const isTriangle = !isCircle && Math.random() > 0.5;
+
+                    return (
+                      <motion.div
+                        key={i}
+                        initial={{ x: 0, y: 0, opacity: 1, scale: 0, rotate: 0 }}
+                        animate={{
+                          x,
+                          y,
+                          opacity: [1, 1, 0],
+                          scale: [0, 1.2, 0.8],
+                          rotate: Math.random() * 360 + 180,
+                        }}
+                        transition={{
+                          duration: 1.4 + Math.random() * 0.6,
+                          ease: [0.1, 0.8, 0.3, 1], // Decelerating curve
+                          delay: Math.random() * 0.05,
+                        }}
+                        style={{
+                          position: "absolute",
+                          width: size,
+                          height: size,
+                          backgroundColor: color,
+                          borderRadius: isCircle ? "50%" : isTriangle ? "0%" : "2px",
+                          clipPath: isTriangle ? "polygon(50% 0%, 0% 100%, 100% 100%)" : undefined,
+                        }}
+                      />
+                    );
+                  })}
                 </div>
-                <h3 className="text-2xl font-sans font-black uppercase text-black">Your Request is Received!</h3>
-                <p className="text-neutral-600 font-semibold max-w-sm mx-auto text-sm font-sans">
-                  Excellent choice! We have received your request to design a bespoke draft for <strong>{companyName}</strong>. 
-                  Our team will reach out at <strong>{email}</strong> within 24 hours to confirm any specifics.
-                </p>
-                <div className="pt-4">
+
+                {/* Central Icon Container with Pulsing Ripple Rings */}
+                <div className="relative inline-flex items-center justify-center mb-2" id="success-icon-badge">
+                  {/* Expanding Ripple Ring 1 */}
+                  <motion.div
+                    initial={{ opacity: 0.6, scale: 0.8 }}
+                    animate={{ opacity: 0, scale: 2.2 }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeOut" }}
+                    className="absolute w-16 h-16 rounded-full border-4 border-purple-600/30"
+                  />
+                  {/* Expanding Ripple Ring 2 */}
+                  <motion.div
+                    initial={{ opacity: 0.4, scale: 0.8 }}
+                    animate={{ opacity: 0, scale: 1.7 }}
+                    transition={{ duration: 1.5, delay: 0.5, repeat: Infinity, ease: "easeOut" }}
+                    className="absolute w-16 h-16 rounded-full border-4 border-black/20"
+                  />
+                  
+                  {/* Sparkles visual triggers */}
+                  <motion.div
+                    initial={{ scale: 0, rotate: -45 }}
+                    animate={{ scale: [0, 1.2, 1], rotate: 0 }}
+                    transition={{ delay: 0.2, type: "spring" }}
+                    className="relative p-5 rounded-none bg-purple-50 border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-10"
+                  >
+                    <Flame className="w-10 h-10 text-purple-600 animate-pulse" />
+                    <Sparkles className="w-5 h-5 text-yellow-500 absolute -top-3.5 -right-3.5 animate-bounce stroke-[2.5]" />
+                  </motion.div>
+                </div>
+
+                {/* Heading and text elements (staggered entrance) */}
+                <div className="space-y-3 relative z-10">
+                  <motion.h3 
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
+                    className="text-2xl sm:text-3xl font-sans font-black uppercase text-black tracking-tight"
+                  >
+                    Your Request is Received!
+                  </motion.h3>
+                  
+                  <motion.p 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.45, duration: 0.5, ease: "easeOut" }}
+                    className="text-neutral-600 font-semibold max-w-sm mx-auto text-xs sm:text-sm font-sans leading-relaxed"
+                  >
+                    Excellent choice! We have received your request to design a bespoke draft for <strong className="text-black font-black">{companyName}</strong>. 
+                    Our team will reach out at <strong className="text-purple-600 underline decoration-2">{email}</strong> within 24 hours to confirm any specifics.
+                  </motion.p>
+                </div>
+
+                {/* Simulated database locking checkmark line indicator */}
+                <motion.div 
+                  initial={{ width: "0%" }}
+                  animate={{ width: "100%" }}
+                  transition={{ delay: 0.6, duration: 1.2, ease: "easeInOut" }}
+                  className="max-w-xs mx-auto h-1.5 bg-neutral-100 border border-black relative overflow-hidden"
+                >
+                  <div className="absolute top-0 bottom-0 left-0 bg-purple-600 w-full animate-pulse" />
+                </motion.div>
+
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.75, duration: 0.4 }}
+                  className="pt-2"
+                >
                   <button
                     type="button"
                     onClick={resetForm}
-                    className="px-6 py-2.5 bg-black hover:bg-neutral-800 text-white border-2 border-black font-sans font-black text-sm uppercase tracking-widest rounded-none shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-colors cursor-pointer"
+                    className="px-8 py-3 bg-black hover:bg-neutral-800 text-white border-2 border-black font-sans font-black text-xs uppercase tracking-widest rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all cursor-pointer hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
                     id="modal-done-btn"
                   >
                     Close Window
                   </button>
-                </div>
+                </motion.div>
               </motion.div>
             )}
           </motion.div>
